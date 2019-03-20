@@ -1,18 +1,44 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+    <div class="home">
+        <img alt="Vue logo" src="../assets/logo.png">
+        <div id="posts">
+            <CardC class="card"
+                   v-for="post in posts"
+                   :title="post.title"/>
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+    import { Component, Vue } from 'vue-property-decorator';
+    import CardC from "@/components/CardC.vue";
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class Home extends Vue {}
+    import store from "@/store"; // @ is an alias to /src
+
+    import axios from 'axios';
+
+    @Component({
+        components: {
+            CardC,
+        },
+    })
+    export default class Home extends Vue {
+        posts: string[] = [];
+
+        beforeCreate () {
+            axios.get(store.state.url + "/api/posts")
+                .then(result =>
+                    this.posts = result.data["data"])
+                .catch(err => console.log(err))
+        }
+    }
 </script>
+
+<style lang="scss">
+    #posts {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+</style>
