@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-
+        baseUrl: 'https://school-api-app.herokuapp.com'
     },
     mutations: {
 
