@@ -1,5 +1,5 @@
 <template>
-    <div class="uk-card uk-card-default hover uk-card-body uk-width-1-2@m">
+    <div class="uk-card uk-card-default hover uk-card-body ">
         <h3 class="uk-card-title">{{ title }}</h3>
     </div>
 </template>
@@ -17,9 +17,13 @@
 <style lang="scss" scoped>
     .uk-card {
         margin-bottom: 20px;
+        border-radius: 5px;
+        text-align: center;
     }
 
     .hover {
+        transition: .3s;
+
         &:hover {
             box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
         }

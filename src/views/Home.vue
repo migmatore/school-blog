@@ -1,17 +1,32 @@
 <template>
     <div class="home">
         <HeaderC/>
-        <div id="posts">
-            <CardC v-for="post in posts"
-                   :key="post.id"
-                   :title="post.title"
-                   @click.native="getId(post.id)"/>
+<!--        <div id="posts">-->
+<!--            <div class="post"-->
+<!--                 v-for="(post, index) in posts"-->
+<!--                 :key="post.title + '_' + index">-->
+<!--                <router-link :to="'/blog/' + post.id">-->
+<!--                    <CardC :title="post.title"/>-->
+<!--                </router-link>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="container">
+            <div class="column">
+                <div class="col-sm-12"
+                     v-for="(post, index) in posts"
+                     :key="post.title + '_' + index">
+                    <router-link :to="'/blog/post/' + post.id">
+                        <CardC :title="post.title"/>
+                    </router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script lang="ts">
     import { Component, Vue } from 'vue-property-decorator';
+
     import HeaderC from "@/components/HeaderC.vue";
     import CardC from "@/components/CardC.vue"; // @ is an alias to /src
 
@@ -29,24 +44,14 @@
         public posts: string[] = [];
 
         beforeCreate() {
-            axios.get('https://school-api-app.herokuapp.com/api/posts')
+            axios.get(store.state.baseUrl + '/api/posts')
                 .then(response =>
                     this.posts = response.data["data"])
                 .catch(err => console.log(err))
-        }
-
-        getId(id: any) {
-            console.log(id)
         }
     }
 </script>
 
 <style lang="scss">
-    #posts {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin-top: 30px;
-    }
+
 </style>
