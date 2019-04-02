@@ -4,6 +4,7 @@
         <div class="title">
             <h1>{{ postDetail.title }}</h1>
         </div>
+        <ActionC/>
     </div>
 </template>
 
@@ -12,12 +13,12 @@
 
     import HeaderC from "@/components/HeaderC.vue";
 
-    import store from "@/store";
-
-    import axios from 'axios';
+    import { HTTP } from "@/http-common";
+    import ActionC from "@/components/ActionC.vue";
 
     @Component({
         components: {
+            ActionC,
             HeaderC
         }
     })
@@ -25,11 +26,11 @@
         public postDetail: string[] = [];
 
         beforeCreate() {
-            axios.get(store.state.baseUrl + '/api/post', {
-                params: {
-                    id: this.$route.params.slug
-                }
-            })
+            HTTP.get('/api/post', {
+                    params: {
+                        id: this.$route.params.id
+                    }
+                })
                 .then(response =>
                     this.postDetail = response.data["data"])
                 .catch(err => console.log(err))

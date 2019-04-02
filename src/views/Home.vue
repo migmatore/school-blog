@@ -21,6 +21,7 @@
                 </div>
             </div>
         </div>
+        <ActionC/>
     </div>
 </template>
 
@@ -29,13 +30,13 @@
 
     import HeaderC from "@/components/HeaderC.vue";
     import CardC from "@/components/CardC.vue"; // @ is an alias to /src
+    import ActionC from "@/components/ActionC.vue";
 
-    import store from "@/store";
-
-    import axios from 'axios'
+    import { HTTP } from '@/http-common';
 
     @Component({
         components: {
+            ActionC,
             CardC,
             HeaderC,
         },
@@ -44,7 +45,7 @@
         public posts: string[] = [];
 
         beforeCreate() {
-            axios.get(store.state.baseUrl + '/api/posts')
+            HTTP.get('/api/posts')
                 .then(response =>
                     this.posts = response.data["data"])
                 .catch(err => console.log(err))
