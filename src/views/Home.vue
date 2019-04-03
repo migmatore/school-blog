@@ -11,8 +11,8 @@
 <!--            </div>-->
 <!--        </div>-->
         <div class="container">
-            <div class="column">
-                <div class="col-sm-12"
+            <div class="row">
+                <div class="col-sm-6"
                      v-for="(post, index) in posts"
                      :key="post.title + '_' + index">
                     <router-link :to="'/blog/post/' + post.id">
@@ -21,7 +21,6 @@
                 </div>
             </div>
         </div>
-        <ActionC/>
     </div>
 </template>
 

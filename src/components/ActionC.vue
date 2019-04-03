@@ -1,7 +1,7 @@
 <template>
     <div id="actions">
-        <button @click="deletePost">Delete</button><br>
-        <button>Update</button>
+        <button class="btn-c btn-d" @click="deletePost">Delete</button><br>
+        <button class="btn-c btn-p">Update</button>
     </div>
 </template>
 
@@ -28,6 +28,8 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "../style.scss";
+
     #actions {
         position: fixed;
         bottom: 0;

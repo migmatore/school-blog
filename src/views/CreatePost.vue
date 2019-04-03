@@ -15,7 +15,7 @@
             <form method="post" @submit="this.createPost">
                 <p>Title: </p>
                 <input type="text" v-model="title" placeholder="title"><br>
-                <button>Create</button>
+                <button class="btn-c btn-s">Create</button>
             </form>
         </div>
     </div>
@@ -51,6 +51,8 @@
 </script>
 
 <style lang="scss">
+    @import "../style.scss";
+
     .create {
         display: flex;
         justify-content: center;
