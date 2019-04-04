@@ -16,7 +16,7 @@
                      v-for="(post, index) in posts"
                      :key="post.title + '_' + index">
                     <router-link :to="'/blog/post/' + post.id">
-                        <CardC :title="post.title"/>
+                        <CardC :title="post.title" :body="post.body"/>
                     </router-link>
                 </div>
             </div>

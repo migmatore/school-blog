@@ -8,13 +8,16 @@
   },
   "dependencies": {
     "axios": "latest",
+    "summernote": "^0.8.11",
     "vue": "^2.6.6",
     "vue-class-component": "^6.0.0",
+    "vue-html-editor": "^0.2.1",
     "vue-property-decorator": "^7.0.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@types/jquery": "^3.3.29",
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-typescript": "^3.5.0",
     "@vue/cli-service": "^3.5.3",

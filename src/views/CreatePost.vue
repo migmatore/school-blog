@@ -13,16 +13,18 @@
 <!--        </form>-->
         <div class="create">
             <form method="post" @submit="this.createPost">
-                <p>Title: </p>
-                <input type="text" v-model="title" placeholder="title"><br>
-                <button class="btn-c btn-s">Create</button>
+                <input type="text" :class="this.inputClass" v-model="title" placeholder="title"><br>
+                <textarea v-model="body" placeholder="body"></textarea><br>
+                <div class="button-div">
+                    <button class="btn-c btn-s">Create</button>
+                </div>
             </form>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-    import { Component, Vue } from 'vue-property-decorator'
+    import {Component, Vue, Watch} from 'vue-property-decorator'
 
     import HeaderC from "@/components/HeaderC.vue";
 
@@ -32,20 +34,50 @@
         components: {HeaderC}
     })
     export default class CreatePost extends Vue {
-        private static valid: boolean = true;
+        private valid: boolean = true;
 
         title: string = '';
+        body: string = '';
+
+        inputClass: string = "input-c";
+
+        beforeCreate() {
+
+        }
 
         public createPost(e: any) {
             e.preventDefault();
 
             const formData = new FormData();
 
-            formData.append("title", this.title);
+            if (this.isValid()) {
+                formData.append("title", this.title);
+                formData.append("body", this.body);
 
-            HTTP.post('/api/post', formData)
-                .then(response => console.log(response))
-                .catch(err => console.log(err))
+                HTTP.post('/api/post', formData)
+                    .then(response => console.log(response))
+                    .catch(err => console.log(err));
+            } else {
+                this.inputClass = "input-c input-e";
+            }
+        }
+
+        public isValid() {
+            return this.title && this.body != "";
+        }
+
+        @Watch("title")
+        public onTitleChange(value: string) {
+            if (value != '') {
+                this.inputClass = "input-c input-s"
+            } else if (value == '') {
+                this.inputClass = "input-c input-e"
+            }
+        }
+
+        @Watch("body")
+        public onBodyChange(value: string) {
+
         }
     }
 </script>
@@ -57,23 +89,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 50px 20px 20px;
 
         input[type="text"] {
-            outline: 0;
-            padding: 5px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px #c8e6c9;
-            transition: .3s;
-
-            &:focus {
-                box-shadow:  0 2px 15px #c8e6c9;
-            }
+            width: 400px
         }
-    }
 
-    .title {
-        margin-bottom: 5px;
+        .button-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
     }
 </style>

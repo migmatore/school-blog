@@ -1,6 +1,13 @@
 <template>
-    <div class="uk-card uk-card-default hover uk-card-body ">
-        <h3 class="uk-card-title">{{ title }}</h3>
+<!--    <div class="uk-card uk-card-default hover uk-card-body ">-->
+<!--        <h3 class="uk-card-title">{{ title }}</h3>-->
+<!--    </div>-->
+    <div class="uk-card uk-card-default hover">
+        <div class="uk-card-header">
+            <h3 class="uk-card-title">{{ title }}</h3>
+        </div>
+        <div class="uk-card-body">{{ body }}</div>
+        <div class="uk-card-footer"></div>
     </div>
 </template>
 
@@ -11,6 +18,8 @@
     export default class CardC extends Vue{
         @Prop()
         private title!: String;
+        @Prop()
+        private body!: String;
     }
 </script>
 
@@ -19,6 +28,10 @@
         margin-bottom: 20px;
         border-radius: 5px;
         text-align: center;
+
+        .uk-card-body {
+            text-align: left;
+        }
     }
 
     .hover {
