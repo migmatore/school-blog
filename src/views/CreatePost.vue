@@ -54,7 +54,7 @@
                 formData.append("title", this.title);
                 formData.append("body", this.body);
 
-                HTTP.post('/api/post', formData)
+                HTTPS.post('/api/post', formData)
                     .then(response => console.log(response))
                     .catch(err => console.log(err));
             } else {

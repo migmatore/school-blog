@@ -12,7 +12,7 @@
 <!--        </div>-->
         <div class="container">
             <div class="row">
-                <div class="col-sm-6"
+                <div class="col-md-6"
                      v-for="(post, index) in posts"
                      :key="post.title + '_' + index">
                     <router-link :to="'/blog/post/' + post.id">
@@ -21,6 +21,7 @@
                 </div>
             </div>
         </div>
+        <ActionC/>
     </div>
 </template>
 
@@ -31,7 +32,7 @@
     import CardC from "@/components/CardC.vue"; // @ is an alias to /src
     import ActionC from "@/components/ActionC.vue";
 
-    import { HTTP } from '@/http-common';
+    import { HTTP, HTTPS } from '@/http-common';
 
     @Component({
         components: {
@@ -44,7 +45,7 @@
         public posts: string[] = [];
 
         beforeCreate() {
-            HTTP.get('/api/posts')
+            HTTPS.get('/api/posts')
                 .then(response =>
                     this.posts = response.data["data"])
                 .catch(err => console.log(err))
@@ -53,5 +54,16 @@
 </script>
 
 <style lang="scss">
+    .link {
+        text-decoration: none;
+    }
 
+    .container .row .col-sm-6 .col-md-6 a {
+        text-decoration: none;
+    }
+
+    .col-md-6 {
+        position: relative;
+        top: 0;
+    }
 </style>

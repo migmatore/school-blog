@@ -29,8 +29,23 @@
         border-radius: 5px;
         text-align: center;
 
+        .uk-card-header {
+            cursor: default;
+
+            .uk-card-title {
+                cursor: pointer;
+                word-wrap: break-word;
+            }
+        }
+
         .uk-card-body {
             text-align: left;
+            cursor: default;
+            word-wrap: break-word;
+        }
+        
+        .uk-card-footer {
+            cursor: default;
         }
     }
 
