@@ -11,8 +11,8 @@
 <!--            </div>-->
 <!--        </div>-->
         <div class="container">
-            <div class="row">
-                <div class="col-md-6"
+            <div class="column">
+                <div class="col-md-12"
                      v-for="(post, index) in posts"
                      :key="post.title + '_' + index">
                     <router-link :to="'/blog/post/' + post.id">
@@ -58,7 +58,7 @@
         text-decoration: none;
     }
 
-    .container .row .col-sm-6 .col-md-6 a {
+    .container .column .col-sm-6 .col-md-12 a {
         text-decoration: none;
     }
 

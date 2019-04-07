@@ -6,7 +6,24 @@
         <div class="uk-card-header">
             <h3 class="uk-card-title">{{ title }}</h3>
         </div>
-        <div class="uk-card-body">{{ body }}</div>
+        <div class="uk-card-body">
+            <div class="container">
+                <div class="column">
+                    <div class="col-sm-12col-md-12">
+                        <img src="https://cdn.oboi7.com/8ddd6d3d36aa610d0e108d63df5161096586a331/oblaka-pejzazhi-derevya-trava-ozera-nebo.jpg" alt="">
+                    </div>
+                    <div class="col-sm-12 col-md-12">
+                        <p>{{ body }}</p>
+                    </div>
+                </div>
+            </div>
+<!--            <div class="img-div">-->
+<!--                -->
+<!--            </div>-->
+<!--            <div class="body-div">-->
+<!--                -->
+<!--            </div>-->
+        </div>
         <div class="uk-card-footer"></div>
     </div>
 </template>
@@ -42,6 +59,29 @@
             text-align: left;
             cursor: default;
             word-wrap: break-word;
+            //display: inline-block;
+
+            img {
+                margin-bottom: 10px;
+            }
+
+            .img-div {
+                /*float: left;*/
+                /*width: content-box;*/
+
+                /*img {*/
+                /*    width: 50%;*/
+                /*    height: 50%;*/
+                /*    float: left;*/
+                /*    margin-right: 15px;*/
+                /*    margin-bottom: 5px;*/
+                /*}*/
+            }
+            
+            /*.body-div {*/
+            /*    position: relative;*/
+            /*    float: right;*/
+            /*}*/
         }
         
         .uk-card-footer {
