@@ -58,7 +58,7 @@
         text-decoration: none;
     }
 
-    .container .column .col-sm-6 .col-md-12 a {
+    .container .column .col-md-12 a {
         text-decoration: none;
     }
 
